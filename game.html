@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Hula-Hula Food! — Guess the Filipino dish. A fun food quiz for LCBA TVL-HE.">
+        <meta name="author" content="LCBA - TVL/HE">
+        <link rel="icon" href="images/icon/lcba.png" type="image/png">
+        <title>Hula-Hula Food! | LCBA TVL-HE</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/main_style.css" rel="stylesheet">
+        <link href="css/subpage_style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/game.css">
+
+    </head>
+
+    <body>
+
+        <section class="lcba-loader">
+            <div class="lcba-spinner">
+                <span class="lcba-spinner-ring"></span>
+            </div>
+        </section>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#lcbaMainNav" aria-controls="lcbaMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="index.html" class="navbar-brand mx-auto mx-lg-0">LCBA</a>
+                <div class="d-flex align-items-center d-lg-none">
+                    <i class="nav-call-icon bi-telephone-plus me-3"></i>
+                    <a class="lcba-btn btn" href="index.html#contact">0961-074-5530</a>
+                </div>
+                <div class="collapse navbar-collapse" id="lcbaMainNav">
+                    <ul class="navbar-nav ms-lg-5">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="history.html">History</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tvlhe.html">TVL-HE</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="game.html">Game</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    </ul>
+                    <div class="d-lg-flex align-items-center d-none ms-auto">
+                        <i class="nav-call-icon bi-telephone-plus me-3"></i>
+                        <a class="lcba-btn btn" href="index.html#contact">0961-074-5530</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+
+            <!-- SUPERHERO -->
+            <section class="game-hero">
+                <div class="game-hero-floats" aria-hidden="true"></div>
+
+                <div class="container game-hero-content">
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <div class="game-eyebrow">🇵🇭 Filipino Food Quiz</div>
+                            <h1 class="game-hero-title">
+                                Hula-Hula
+                                <span class="title-accent">Food!</span>
+                            </h1>
+                            <p class="game-hero-sub">How well do you know Filipino cuisine? Read the clues and guess the dish. 49 dishes — can you get them all?</p>
+                            <div class="game-hero-stats">
+                                <div>
+                                    <span class="game-stat-num">49</span>
+                                    <span class="game-stat-label">Dishes</span>
+                                </div>
+                                <div>
+                                    <span class="game-stat-num">3</span>
+                                    <span class="game-stat-label">Clues each</span>
+                                </div>
+                                <div>
+                                    <span class="game-stat-num">∞</span>
+                                    <span class="game-stat-label">Tries</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <svg class="game-hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
+                    <path fill="#eef1fa" d="M0,40L60,36C120,32,240,24,360,28C480,32,600,48,720,52C840,56,960,48,1080,40C1200,32,1320,24,1380,20L1440,16L1440,80L0,80Z"/>
+                </svg>
+            </section>
+
+            <!-- GAME -->
+            <section class="game-section">
+                <div class="container">
+                    <div class="row g-4 justify-content-center">
+
+                        <!-- Main game box -->
+                        <div class="col-lg-7 col-12">
+                            <div class="game-box">
+                                <div class="game-box-stripe"></div>
+                                <div class="game-box-inner">
+
+                                    <div class="game-box-header">
+                                        <div>
+                                            <p class="game-box-title">Guess the Filipino dish</p>
+                                            <p class="game-box-sub" id="sub">Gotta guess them all!</p>
+                                        </div>
+                                        <div class="game-box-badges">
+                                            <span class="game-badge">🇵🇭</span>
+                                            <span class="game-badge game-badge-score" id="score">Score: 0</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="game-progress-track">
+                                        <div class="game-progress-fill" id="progressBar"></div>
+                                    </div>
+                                    <p class="game-progress-label" id="progress">0 / 49 dishes</p>
+
+                                    <div class="game-clues" id="clues"></div>
+
+                                    <div class="game-input-row">
+                                        <input class="game-input" type="text" id="input" placeholder="Type the dish name…" autocomplete="off">
+                                        <button class="game-btn-guess" id="guessBtn" onclick="guess()">Guess →</button>
+                                    </div>
+
+                                    <div class="game-actions">
+                                        <button class="game-btn" id="nextBtn" style="display:none" onclick="next()">Next dish →</button>
+                                        <button class="game-btn" id="restartBtn" style="display:none" onclick="restart()">↺ Play again</button>
+                                    </div>
+
+                                    <div class="game-message" id="message"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How 2 Plei -->
+                        <div class="col-lg-4 col-12">
+                            <div class="game-how-to">
+                                <p class="how-to-heading"><i class="bi-controller"></i> How to Play</p>
+
+                                <div class="how-to-step">
+                                    <div class="how-to-num">1</div>
+                                    <p class="how-to-text">Read the clues shown in the blue panel carefully.</p>
+                                </div>
+                                <div class="how-to-step">
+                                    <div class="how-to-num">2</div>
+                                    <p class="how-to-text">Type the name of the Filipino dish you think matches.</p>
+                                </div>
+                                <div class="how-to-step">
+                                    <div class="how-to-num">3</div>
+                                    <p class="how-to-text">Press <strong>Guess</strong> or hit <strong>Enter</strong> to submit.</p>
+                                </div>
+                                <div class="how-to-step">
+                                    <div class="how-to-num">4</div>
+                                    <p class="how-to-text">Get it right to earn a point, then move to the next dish!</p>
+                                </div>
+
+                                <div class="game-food-ticker" aria-hidden="true">
+                                    🍚 🍖 🥘 🍜 🫕 🍳 🥗 🍲 🥩 🌶️ 🧄 🍋 🧅 🫙 🫚 🍗
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="lcba-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="footer-copy-wrap">
+                            <p class="mb-0">
+                                <span class="footer-copy-text">Copyright © 2026 <a href="http://www.lcbaschool.edu.ph" target="_blank">Laguna College of Business and Arts</a>. All rights reserved.</span>
+                                Design: <a rel="sponsored" href="https://www.facebook.com/LLUVSICC/" target="_blank">Francis Laurenz M. Lauro</a> aka <a href="https://github.com/L3yyy/L3y" target="_blank">L3Y</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- ✅ Only one copy of game_script.js -->
+        <script src="game/js/game_script.js"></script>
+
+        <script>
+        (function() {
+            const emojis = ['🍚','🍖','🥘','🍜','🫕','🍳','🥗','🍲','🥩','🌶️','🧄','🍋','🧅','🫙','🫚','🍗','🥕','🥦'];
+            const container = document.querySelector('.game-hero-floats');
+            if (!container) return;
+            for (let i = 0; i < 20; i++) {
+                const el = document.createElement('span');
+                el.className = 'float-emoji';
+                el.textContent = emojis[i % emojis.length];
+                el.style.cssText = `
+                    left:${Math.random()*100}%;
+                    bottom:-60px;
+                    animation-duration:${10+Math.random()*18}s;
+                    animation-delay:${Math.random()*14}s;
+                    font-size:${1.4+Math.random()*1.4}rem;
+                `;
+                container.appendChild(el);
+            }
+        })();
+
+        const scoreEl = document.getElementById('score');
+        if (scoreEl) {
+            new MutationObserver(() => {
+                scoreEl.classList.remove('bump');
+                void scoreEl.offsetWidth;
+                scoreEl.classList.add('bump');
+                setTimeout(() => scoreEl.classList.remove('bump'), 350);
+            }).observe(scoreEl, { childList: true, subtree: true, characterData: true });
+        }
+        </script>
+
+    </body>
+</html>
