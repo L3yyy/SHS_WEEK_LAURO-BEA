@@ -59,6 +59,7 @@ p {
   color: var(--p-color);
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-normal);
+  align: justify;
 }
 
 ul li {
